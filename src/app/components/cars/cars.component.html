@@ -1,0 +1,8 @@
+<swiper [config]="config" (swiper)="onSwiper($event)"
+(slideChange)="onSlideChange()">
+  <ng-template swiperSlide>
+    <h1>Rent your dream car</h1>
+  </ng-template>
+  <ng-template swiperSlide>Slide 2</ng-template>
+  <ng-template swiperSlide>Slide 3</ng-template>
+</swiper>
