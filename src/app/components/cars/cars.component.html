@@ -1,8 +1,27 @@
-<swiper [config]="config" (swiper)="onSwiper($event)"
-(slideChange)="onSlideChange()">
-  <ng-template swiperSlide>
-    <h1>Rent your dream car</h1>
-  </ng-template>
-  <ng-template swiperSlide>Slide 2</ng-template>
-  <ng-template swiperSlide>Slide 3</ng-template>
-</swiper>
+<div id="cars">
+  <section>
+    <swiper [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
+        <ng-template swiperSlide>
+            <div class="m-auto">
+                <h1 class="cars__swiper-title">Rent your dream car</h1>
+                <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
+            </div>
+        </ng-template>
+        <ng-template swiperSlide>
+            <div class="m-auto">
+                <h1 class="cars__swiper-title">Rent your dream car</h1>
+                <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
+            </div>
+        </ng-template>
+        <ng-template swiperSlide>
+            <div class="m-auto">
+                <h1 class="cars__swiper-title">Rent your dream car</h1>
+                <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
+            </div>
+        </ng-template>
+      </swiper>
+  </section>
+  <section>
+    <app-card></app-card>
+  </section>
+</div>

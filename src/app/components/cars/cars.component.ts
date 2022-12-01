@@ -12,7 +12,7 @@ export class CarsComponent implements OnInit {
    */
   config: SwiperOptions = {
     slidesPerView: 1,
-    spaceBetween: 50,
+    spaceBetween: 0,
     navigation: true,
     pagination: { clickable: true },
     scrollbar: { draggable: true },preventInteractionOnTransition	:false
