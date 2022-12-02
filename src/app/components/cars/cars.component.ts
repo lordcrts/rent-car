@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Car } from 'src/app/core/models/car.model';
 import { CarService } from 'src/app/shared/services/car.service';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions } from 'swiper';
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions, Autoplay } from 'swiper';
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
@@ -18,7 +18,7 @@ export class CarsComponent implements OnInit {
     navigation: true,
     pagination: { clickable: true },
     scrollbar: { draggable: true },
-    effect	:"cube"
+    autoplay:true
   };
   constructor(private carService:CarService) { }
 

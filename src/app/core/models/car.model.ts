@@ -7,6 +7,7 @@ export class Car {
     description: string
     price: number
     photo: string
+    specifications:any;
 
     constructor(car: Car) {
         this.id = car.id
@@ -17,5 +18,6 @@ export class Car {
         this.description = car.description
         this.price = car.price
         this.photo = car.photo
+        this.specifications = car.specifications
     }
 }
