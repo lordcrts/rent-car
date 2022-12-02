@@ -1,9 +1,8 @@
 <div id="car-detail">
   <div *ngIf="carDetail$ | async as carDetail" class="fadein animation-duration-1000">
-    <div class="text-center">
-        <img [src]="carDetail.photo" alt="" width="100%">
-        <!-- <p-image [src]="carDetail.photo" alt="Image" width="100%" [preview]="true">
-        </p-image> -->
+    <div class="text-center car-detail__photo m-auto">
+        <p-image class="m-auto" [src]="carDetail.photo" alt="Image" width="100%" [preview]="true">
+        </p-image>
     </div>
     
     <div class="container">
@@ -72,7 +71,7 @@
       </p-tabView>
     </div>
   </div>
-  <div class="container" *ngIf="loadCars">
+  <div class="container" *ngIf="(loadingState | async)">
     <div class="grid">
         <div class="flex col-12">
             <p-skeleton width="500px" height="250px" class="m-auto"></p-skeleton>

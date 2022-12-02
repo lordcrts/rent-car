@@ -1,6 +1,6 @@
 <span class="p-input-icon-right">
   <em (click)="search('enter')" class="pi pi-search custom-icon"></em>
   <em *ngIf="searchInput" (click)="clear()" class="pi pi-times custom-icon custom-icon-times"></em>
-  <input  class="search-component" id="search-component" [(ngModel)]="searchInput" (keyup)="search()"  (keyup.enter)="search('enter')" [placeholder]="placeholder"
+  <input  class="search-component" id="search-component" [(ngModel)]="searchInput" (keyup.enter)="search('enter')" [placeholder]="placeholder"
     pInputText>
 </span>

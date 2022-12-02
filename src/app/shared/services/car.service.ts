@@ -16,7 +16,7 @@ export class CarService {
   }
 
   getCarsByBrand(brand:string):Observable<Car[]> {
-    return this.http.get<Car[]>("./assets/cars.json").pipe(map(x => x.filter(x => x.brand.toLowerCase().includes(brand.toLowerCase()))),delay(2000));
+    return this.http.get<Car[]>("./assets/cars.json").pipe(map(x => x.filter(x => x.brand.toLowerCase().includes(brand.toLowerCase()))),delay(1000));
   }
 
   getCarByModel(url_slug:string):Observable<Car | any> {

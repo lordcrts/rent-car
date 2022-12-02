@@ -4,6 +4,10 @@ import { CarService } from 'src/app/shared/services/car.service';
 import { NavigationEnd, Router, Event as NavigationEvent } from '@angular/router';
 import { Car } from 'src/app/core/models/car.model';
 import { MenuItem } from 'primeng/api';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/shared/store/app.state';
+import { getCarDetailSelector, startStopLoadingSelector } from 'src/app/shared/store/shared.selector';
+import { setCarDetail, startStopLoading } from 'src/app/shared/store/shared.actions';
 @Component({
   selector: 'app-car-detail',
   templateUrl: './car-detail.component.html',
@@ -16,17 +20,13 @@ export class CarDetailComponent implements OnInit, OnDestroy {
   loadCars:boolean = true;
   dues:number[]= [1,2,3,4,5,6];
   selectedDue:any;
-  constructor(private router: Router, private carService: CarService) {
+  loadingState!: Observable<any>
+  constructor(private router: Router, private store: Store<AppState>, private carService: CarService) {
     this.routerSuscription = this.router.events.subscribe((event: NavigationEvent) => {
       if (event instanceof NavigationEnd) {
-        this.carDetail$ = this.carService.getCarByModel(event.url.split('/')[1]);
-        this.carDetail$.subscribe(data => {
-          if (!data) {
-            this.router.navigate(['/'])
-          }else{
-            this.loadCars = false 
-          }
-        })
+        this.carDetail$ = this.store.select(getCarDetailSelector)
+        this.loadingState = this.store.select(startStopLoadingSelector)
+        this.getCarDetail(event.url.split('/')[1])
       }
     });
     this.headerItems = [
@@ -35,6 +35,20 @@ export class CarDetailComponent implements OnInit, OnDestroy {
       { label: 'Precio', icon: 'pi pi-fw pi-money-bill' },
       { label: 'Más imágenes', icon: 'pi pi-fw pi-images' },
     ];
+  }
+
+  getCarDetail(url_slug:string){
+    this.store.dispatch(setCarDetail({url_slug:url_slug}));
+    this.store.dispatch(startStopLoading({loading:true}));
+    this.carDetail$.subscribe(data => {
+      if(data){
+        if(data.id){
+          this.store.dispatch(startStopLoading({loading:false}));
+        }else{
+          this.router.navigate(['/'])
+        }
+      }
+    })
   }
 
   ngOnInit(): void {
