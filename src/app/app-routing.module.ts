@@ -6,6 +6,11 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./components/cars/cars.module').then(m => m.CarsModule)
   },
+  {
+    path: '**',
+    redirectTo: '/',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

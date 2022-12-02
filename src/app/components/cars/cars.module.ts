@@ -6,14 +6,21 @@ import { CarsComponent } from './cars.component';
 import { CarDetailComponent } from './car-detail/car-detail.component';
 import { SwiperModule } from 'swiper/angular';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CarService } from 'src/app/shared/services/car.service';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
-  declarations: [CarsComponent, CarDetailComponent],
+  declarations: [
+    CarsComponent, 
+    CarDetailComponent
+  ],
   imports: [
     CommonModule,
     CarsRoutingModule,
     SwiperModule,
-    SharedModule
-  ]
+    SharedModule,
+    CardModule
+  ],
+  providers:[CarService]
 })
 export class CarsModule { }

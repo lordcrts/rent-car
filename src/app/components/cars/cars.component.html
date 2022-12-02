@@ -1,27 +1,40 @@
 <div id="cars">
   <section>
-    <swiper [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
-        <ng-template swiperSlide>
-            <div class="m-auto">
-                <h1 class="cars__swiper-title">Rent your dream car</h1>
-                <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-            </div>
-        </ng-template>
-        <ng-template swiperSlide>
-            <div class="m-auto">
-                <h1 class="cars__swiper-title">Rent your dream car</h1>
-                <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-            </div>
-        </ng-template>
-        <ng-template swiperSlide>
-            <div class="m-auto">
-                <h1 class="cars__swiper-title">Rent your dream car</h1>
-                <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-            </div>
-        </ng-template>
-      </swiper>
+    <swiper [config]="config">
+      <ng-template swiperSlide>
+        <div class="m-auto">
+          <h1 class="cars__swiper-title">Rent your dream car</h1>
+          <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut</p>
+        </div>
+      </ng-template>
+      <ng-template swiperSlide>
+        <div class="m-auto">
+          <h1 class="cars__swiper-title">Rent your dream car</h1>
+          <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut</p>
+        </div>
+      </ng-template>
+      <ng-template swiperSlide>
+        <div class="m-auto">
+          <h1 class="cars__swiper-title">Rent your dream car</h1>
+          <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut</p>
+        </div>
+      </ng-template>
+    </swiper>
   </section>
-  <section>
-    <app-card></app-card>
+  <section class="mt-2">
+    <div class="container text-center">
+      <app-search [placeholder]="'Buscar por marca'" [loading]="loadCars" (sendText)="getSearch($event)"></app-search>
+    </div>
+    <div class="container">
+      <app-skeleton-card *ngIf="loadCars"></app-skeleton-card>
+      <app-card *ngIf="!loadCars" [cars]="cars" [buttonText]="'Conocer más'"></app-card>
+      <div *ngIf="!loadCars && cars.length < 1" class="text-center">
+          <h1>No se encontraron resultados con tu busqueda</h1>
+          <img width="50%" src="assets/images/cars/empty.svg" alt="">
+      </div>
+    </div>
   </section>
 </div>

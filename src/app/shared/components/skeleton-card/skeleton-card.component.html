@@ -1,0 +1,26 @@
+<div class="flex flex-wrap justify-content-center ">
+  <div *ngFor="let item of skeletonArray"
+    class="flex align-items-center justify-content-center m-2 border-round card__card-container">
+    <p-card w styleClass="shadow-2">
+      <ng-template pTemplate="header">
+        <p-skeleton width="350px" height="250px" styleClass="card__image"></p-skeleton>
+      </ng-template>
+      <p-skeleton width="100px" height="10px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton height="10px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton height="10px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton height="10px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton height="10px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton height="10px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton height="10px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton height="10px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton height="10px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton height="10px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton height="10px" styleClass="mb-2"></p-skeleton>
+      <ng-template pTemplate="footer">
+        <div class="flex justify-content-center flex-wrap">
+          <p-skeleton width="140px" height="50px" styleClass="mb-2"></p-skeleton>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
