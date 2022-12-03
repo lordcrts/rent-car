@@ -1,9 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { CarService } from 'src/app/shared/services/car.service';
 import { NavigationEnd, Router, Event as NavigationEvent } from '@angular/router';
 import { Car } from 'src/app/core/models/car.model';
-import { MenuItem } from 'primeng/api';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/store/app.state';
 import { getCarDetailSelector, startStopLoadingSelector } from 'src/app/shared/store/shared.selector';
@@ -21,7 +19,7 @@ export class CarDetailComponent implements OnInit, OnDestroy {
   dues:number[]= [1,2,3,4,5,6];
   selectedDue:any;
   loadingState!: Observable<any>
-  constructor(private router: Router, private store: Store<AppState>, private carService: CarService) {
+  constructor(private router: Router, private store: Store<AppState>) {
     this.routerSuscription = this.router.events.subscribe((event: NavigationEvent) => {
       if (event instanceof NavigationEnd) {
         this.carDetail$ = this.store.select(getCarDetailSelector)

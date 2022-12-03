@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CardModule } from 'primeng/card';
+import { SkeletonModule } from 'primeng/skeleton';
 
 import { SkeletonCardComponent } from './skeleton-card.component';
 
@@ -8,7 +10,11 @@ describe('SkeletonCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SkeletonCardComponent ]
+      declarations: [ SkeletonCardComponent ],
+      imports:[
+        CardModule,
+        SkeletonModule
+      ]
     })
     .compileComponents();
   });
