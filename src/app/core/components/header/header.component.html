@@ -1,0 +1,10 @@
+<header>
+    <a class="mr-3" href="/">Home</a>
+    <a *ngIf="currentUser" [routerLink]="'/create'">Add car</a>
+    <span class="spacer"></span>
+    <div class="login-section">
+		<button *ngIf="!currentUser" [routerLink]="'/login'" pButton type="button" label="Login" class="p-button-text"></button>
+		<button *ngIf="currentUser" (click)="logout()" pButton type="button" label="Logout" class="p-button-text"></button>
+		<button *ngIf="!currentUser" [routerLink]="'/register'" pButton type="button" label="Sign up" class="p-button-text"></button>
+	</div>
+</header>

@@ -1,0 +1,72 @@
+<div id="sign-up" class="p-fluid flex flex-wrap justify-content-center align-content-center w-full h-full">
+  <div class="col-12 md:col-4">
+    <p-card>
+      <div class="card">
+        <h1 class="text-center">Sign up</h1>
+        <form [formGroup]="form">
+          <div class="p-inputgroup mb-4">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-float-label">
+              <input type="text" pInputText formControlName="username"
+                [class.ng-dirty]="username.invalid && username.touched || onSubmit">
+              <label>Username</label>
+            </span>
+          </div>
+          <div *ngIf="username.errors && username.errors['required'] && username.touched" class="error text-right">
+            <small>This field is required.</small>
+          </div>
+          <div class="p-inputgroup mb-4">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-float-label">
+              <input type="text" pInputText formControlName="first_name"
+                [class.ng-dirty]="first_name.invalid && first_name.touched || onSubmit">
+              <label>First name</label>
+            </span>
+          </div>
+          <div *ngIf="first_name.errors && first_name.errors['required'] && first_name.touched"
+            class="error text-right">
+            <small>This field is required.</small>
+          </div>
+          <div class="p-inputgroup mb-4">
+            <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+            <span class="p-float-label">
+              <input type="text" pInputText formControlName="email"
+                [class.ng-dirty]="email.invalid && email.touched || onSubmit">
+              <label>Email</label>
+            </span>
+          </div>
+          <div *ngIf="email.errors && email.errors['required'] && email.touched" class="error text-right">
+            <small>This field is required.</small>
+          </div>
+          <div *ngIf="email.errors && email.errors['pattern'] && email.touched" class="error text-right">
+            <small>The email is invalid.</small>
+          </div>
+          <div class="p-inputgroup mb-4">
+            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+            <span class="p-float-label">
+            <input type="password" pInputText formControlName="password"
+              [class.ng-dirty]="username.invalid && username.touched || onSubmit">
+              <label>Password</label>
+              </span>
+          </div>
+          <div *ngIf="password.errors && password.errors['required'] && password.touched" class="error text-right">
+            <small>This field is required.</small>
+          </div>
+          <div *ngFor="let error of objToArray(form.errors)">
+            <div [ngSwitch]="error" class="error text-right">
+              <ng-template ngSwitchDefault>
+                {{error}}
+              </ng-template>
+            </div>
+          </div>
+          <div>
+            <button (click)="submit()" type="submit" pButton label="Sign up" class="p-button-primary"></button>
+          </div>
+          <div class="text-center">
+            <p class="text-p"><a [routerLink]="'/login'">Back</a></p>
+          </div>
+        </form>
+      </div>
+    </p-card>
+  </div>
+</div>

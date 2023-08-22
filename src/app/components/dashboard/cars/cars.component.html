@@ -1,0 +1,40 @@
+<div id="cars">
+  <section>
+    <swiper [config]="config">
+      <ng-template swiperSlide>
+        <div class="m-auto">
+          <h1 class="cars__swiper-title">Rent your dream car</h1>
+          <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut</p>
+        </div>
+      </ng-template>
+      <ng-template swiperSlide>
+        <div class="m-auto">
+          <h1 class="cars__swiper-title">Rent your dream car</h1>
+          <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut</p>
+        </div>
+      </ng-template>
+      <ng-template swiperSlide>
+        <div class="m-auto">
+          <h1 class="cars__swiper-title">Rent your dream car</h1>
+          <p class="cars__swiper-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut</p>
+        </div>
+      </ng-template>
+    </swiper>
+  </section>
+  <section class="mt-2">
+    <div class="container text-center">
+      <app-search [placeholder]="'Search by brand / enter to search'" (sendText)="getSearch($event)"></app-search>
+    </div>
+    <div class="container">
+      <app-skeleton-card *ngIf="(loadingState | async)"></app-skeleton-card>
+      <app-card *ngIf="!(loadingState | async)" [cars]="cars" [buttonText]="'Read more'"></app-card>
+      <div *ngIf="!(loadingState | async) && cars.length < 1" class="text-center">
+          <h1>No results were found with your search</h1>
+          <img width="50%" src="assets/images/cars/empty.svg" alt="">
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,21 @@
+#card
+    .card__card-container
+        max-width: 350px
+        p-card
+            ::ng-deep
+                .card__image
+                    height: 250px
+                .p-card-footer,.p-card-content
+                    padding: 0
+                .p-card-title
+                    margin: 0
+                    font-size: 1.4rem
+                .p-card-content
+                    max-height: 200px
+                    height: 200px
+        .p-button-raised
+            &:hover
+                background: #482ae3 !important
+                color: white
+                transform: scale(1)
+                animation: pulse 2s infinite

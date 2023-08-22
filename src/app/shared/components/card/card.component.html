@@ -1,0 +1,30 @@
+<div id="card">
+  <div class="flex flex-wrap justify-content-center">
+      <div class="flex align-items-center justify-content-center m-2 border-round card__card-container fadein animation-duration-1000"
+        *ngFor="let item of cars">
+        <p-card [header]="item.model + ' | Año '+ item.year" styleClass="shadow-2">
+          <ng-template pTemplate="header">
+            <img class="card__image" alt="car-image" [src]="item.image">
+          </ng-template>
+          <div class="flex">
+            <i class="flex align-items-center  pi pi-car mr-2"></i>
+            <p class="m-0">{{item?.brand?.name}}</p>
+            <i class="flex align-items-center  pi pi-money-bill ml-5 mr-2"></i>
+            <p class="m-0">{{item.price | currency}}</p>
+          </div>
+          <div>
+            <p>{{item.description! | truncate:260}}</p>
+          </div>
+          <ng-template pTemplate="footer">
+            <div class="flex justify-content-center flex-wrap">
+              <a pButton pRipple class="p-button-raised p-button-outlined no-underline justify-content-center"
+                [routerLink]="['/detail/', item.url_slug! | slugify]">
+                {{buttonText}}
+              </a>
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
+  </div>
+
+</div>

@@ -1,0 +1,203 @@
+<div id="create" class="p-fluid flex flex-wrap w-full h-full">
+  <div class="col-12">
+    <p-card>
+      <div class="card">
+        <h1 class="text-center">Add car</h1>
+        <form [formGroup]="form">
+          <div class="grid p-fluid">
+            <div class="col-12">
+                
+                <p-fileUpload name="myfile[]"   [showUploadButton]="false" [showCancelButton]="false"
+                accept="image/*" [maxFileSize]="2000000" (onSelect)="onUpload($event)">
+                <ng-template let-file pTemplate="file">
+                    <div class="text-center m-auto"  style="width: 250px;">
+                        <img width="100%" [src]="file.objectURL" alt="">
+                    </div>
+                </ng-template>
+                </p-fileUpload>
+                <!-- <p-fileUpload [showUploadButton]="false" [showCancelButton]="false" [auto]="true" mode="advanced"
+              (onUpload)="onUpload($event)" accept="image/*" [maxFileSize]="1000000">
+              <ng-template pTemplate="content">
+                asdas
+                <ul *ngIf="uploadedFiles.length">
+                  <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+              </ng-template>
+            </p-fileUpload> -->
+            </div>
+            <div class="col-12 md:col-6">
+              <div class="p-inputgroup mb-3">
+                <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                <span class="p-float-label">
+                  <p-dropdown inputId="dropdown" [class.ng-dirty]="brand.invalid && brand.touched || onSubmit"
+                    [autoDisplayFirst]="false" [options]="brands" formControlName="brand" optionLabel="name">
+                  </p-dropdown>
+                  <label>Brand</label>
+                </span>
+              </div>
+
+              <div *ngIf="brand.errors && brand.errors['required'] && brand.touched" class="error text-right">
+                <small>This field is required.</small>
+              </div>
+            </div>
+            <div class="col-12 md:col-6">
+              <div class="p-inputgroup mb-3">
+                <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                <span class="p-float-label">
+                  <input type="text" pInputText formControlName="model" maxlength="15"
+                    [class.ng-dirty]="model.invalid && model.touched || onSubmit">
+                  <label>Model</label>
+                </span>
+              </div>
+
+              <div *ngIf="model.errors && model.errors['required'] && model.touched" class="error text-right">
+                <small>This field is required.</small>
+              </div>
+            </div>
+            <div class="col-12 md:col-6">
+              <div class="p-inputgroup mb-3">
+                <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                <span class="p-float-label">
+                  <p-inputNumber formControlName="year" [max]="9999" [min]="1111" [minFractionDigits]="0" [maxFractionDigits]="0"></p-inputNumber>
+                  <label>Year</label>
+                </span>
+              </div>
+
+              <div *ngIf="year.errors && year.errors['required'] && year.touched" class="error text-right">
+                <small>This field is required.</small>
+              </div>
+            </div>
+            <div class="col-12 md:col-6">
+              <div class="p-inputgroup mb-3">
+                <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                <span class="p-float-label">
+                  <p-inputNumber formControlName="price" mode="currency" currency="USD" locale="en-US" [max]="99999"
+                    [minFractionDigits]="0"></p-inputNumber>
+                  <label>Price</label>
+                </span>
+              </div>
+
+              <div *ngIf="price.errors && price.errors['required'] && price.touched" class="error text-right">
+                <small>This field is required.</small>
+              </div>
+            </div>
+            <div class="col-12 md:col-6">
+              <div class="p-inputgroup mb-3">
+                <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                <span class="p-float-label">
+                  <input type="text" pInputText formControlName="maker"
+                    [class.ng-dirty]="maker.invalid && maker.touched || onSubmit">
+                  <label>Maker</label>
+                </span>
+              </div>
+
+              <div *ngIf="maker.errors && maker.errors['required'] && maker.touched" class="error text-right">
+                <small>This field is required.</small>
+              </div>
+            </div>
+            <div class="col-12 md:col-6">
+              <div class="p-inputgroup mb-3">
+                <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                <span class="p-float-label">
+                  <p-inputNumber formControlName="identification_number" [max]="99999"></p-inputNumber>
+                  <label>Identification number</label>
+                </span>
+              </div>
+
+              <div
+                *ngIf="identification_number.errors && identification_number.errors['required'] && identification_number.touched"
+                class="error text-right">
+                <small>This field is required.</small>
+              </div>
+            </div>
+            <div class="col-12 md:col-6">
+              <div class="p-inputgroup mb-3">
+                <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                <span class="p-float-label">
+                  <p-inputNumber formControlName="height" [max]="99999"></p-inputNumber>
+                  <label>Height</label>
+                </span>
+              </div>
+
+              <div *ngIf="height.errors && height.errors['required'] && height.touched" class="error text-right">
+                <small>This field is required.</small>
+              </div>
+            </div>
+            <div class="col-12 md:col-6">
+              <div class="p-inputgroup mb-3">
+                <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                <span class="p-float-label">
+                  <p-inputNumber formControlName="widht" [max]="99999"></p-inputNumber>
+                  <label>Widht</label>
+                </span>
+              </div>
+
+              <div *ngIf="widht.errors && widht.errors['required'] && widht.touched" class="error text-right">
+                <small>This field is required.</small>
+              </div>
+            </div>
+            <div class="col-12 md:col-6">
+              <div class="p-inputgroup mb-3">
+                <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                <span class="p-float-label">
+                  <p-inputNumber formControlName="longitude" [max]="99999"></p-inputNumber>
+                  <label>Longitude</label>
+                </span>
+              </div>
+
+              <div *ngIf="longitude.errors && longitude.errors['required'] && longitude.touched"
+                class="error text-right">
+                <small>This field is required.</small>
+              </div>
+            </div>
+            <div class="col-12 md:col-6">
+              <div class="p-inputgroup mb-3">
+                <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                <span class="p-float-label">
+                  <p-inputNumber formControlName="km" [max]="99999"></p-inputNumber>
+                  <label>Km</label>
+                </span>
+              </div>
+
+              <div *ngIf="km.errors && km.errors['required'] && km.touched" class="error text-right">
+                <small>This field is required.</small>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="p-inputgroup mb-3">
+                <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                <span class="p-float-label">
+                  <textarea pInputTextarea formControlName="description"
+                    [class.ng-dirty]="description.invalid && description.touched || onSubmit"></textarea>
+                  <label>Description</label>
+                </span>
+              </div>
+
+              <div *ngIf="description.errors && description.errors['required'] && description.touched"
+                class="error text-right">
+                <small>This field is required.</small>
+              </div>
+            </div>
+            <div class="m-auto" *ngFor="let error of objToArray(form.errors)" >
+              <div [ngSwitch]="error" class="error text-right">
+                <ng-template ngSwitchDefault>
+                  {{error}}
+                </ng-template>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="flex">
+                <div class="col-6">
+                  <button (click)="submit()" type="submit" pButton label="Add car" class="p-button-primary"></button>
+                </div>
+                <div class="col-6">
+                    <button [routerLink]="'/'" pButton label="Cancel" class="p-button-secondary"></button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </p-card>
+  </div>
+</div>

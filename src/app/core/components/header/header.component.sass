@@ -1,0 +1,44 @@
+header
+    // background: #8080805c
+    height: 60px
+    position: fixed
+    width: 100%
+    top:0
+    z-index: 9
+    background: #3f51b5
+    color: #fff
+    overflow: hidden
+    padding: 10px 20px 10px 10px
+    display: flex
+    box-sizing: border-box
+    flex-direction: row
+    align-items: center
+    white-space: nowrap
+    .spacer 
+        flex: 1 1 auto
+    &:after 
+        color: white
+        box-shadow: 5px 10px #888888
+        content: " "
+        position: absolute
+        display: block
+        width: 25%
+        min-width: 200px
+        height: 100%
+        top: 0
+        right: 0
+        z-index: 2
+        background: #333
+        transform-origin: bottom left
+        -ms-transform: skew(-30deg, 0deg)
+        -webkit-transform: skew(-30deg, 0deg)
+        transform: skew(-30deg, 0deg)
+    .login-section
+        z-index: 9
+        .p-button.p-button-text 
+            color: white !important
+    a
+        color: white
+        font-family: Lato
+        font-size: 20px
+    

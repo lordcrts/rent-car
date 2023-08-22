@@ -1,0 +1,57 @@
+<div id="login" class="p-fluid flex flex-wrap justify-content-center align-content-center w-full h-full">
+  <div class="col-12 md:col-4">
+    <p-card>
+      <div class="card">
+
+        <h1 class="text-center">Login</h1>
+        <div class="text-center">
+          <p>Connect with</p>
+          <div class="flex">
+            <div class="m-auto">
+              <asl-google-signin-button type='standard' size='medium'></asl-google-signin-button>
+            </div>
+          </div>
+          <div class="divider">
+            <span>or</span>
+          </div>
+        </div>
+        <form [formGroup]="form">
+          <div class="p-inputgroup mb-4">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-float-label">
+              <input type="text" pInputText formControlName="username"
+                [class.ng-dirty]="username.invalid && username.touched || onSubmit">
+              <label>Username</label>
+            </span>
+          </div>
+          <div *ngIf="username.errors && username.errors['required'] && username.touched" class="error text-right">
+            <small>This field is required.</small>
+          </div>
+          <div class="p-inputgroup mb-4">
+            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+            <span class="p-float-label">
+              <input type="password" pInputText formControlName="password"
+                [class.ng-dirty]="username.invalid && username.touched || onSubmit">
+              <label>Password</label>
+            </span>
+
+          </div>
+          <div *ngIf="password.errors && password.errors['required'] && password.touched" class="error text-right">
+            <small>This field is required.</small>
+          </div>
+          <div *ngIf="form.errors && form.errors['error_description']" class="error text-right">
+            <small>{{form.errors['error_description']}}</small>
+          </div>
+          <div>
+            <button (click)="submit()" type="submit" pButton label="Login" class="p-button-primary"></button>
+          </div>
+          <div class="text-center">
+            <p class="text-p">Don't have an account? <a [routerLink]="'/register'">Sign up</a></p>
+            <p class="text-p"><a [routerLink]="'/'">Home</a></p>
+
+          </div>
+        </form>
+      </div>
+    </p-card>
+  </div>
+</div>

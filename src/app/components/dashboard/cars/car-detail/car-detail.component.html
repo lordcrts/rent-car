@@ -1,0 +1,96 @@
+<div id="car-detail">
+  <div *ngIf="carDetail$ | async as carDetail" class="fadein animation-duration-1000">
+    <div class="text-center car-detail__photo m-auto">
+        <p-image class="m-auto" [src]="carDetail.image!" alt="Image" width="100%" [preview]="true">
+        </p-image>
+    </div>
+    
+    <div class="container">
+      <h1 class="text-center">{{carDetail.model}} - {{carDetail.year}}</h1>
+
+      <p-tabView [scrollable]="true">
+        <p-tabPanel header="Descripción" leftIcon="pi pi-fw pi-home">
+          <div class="fadein animation-duration-1000">
+            <h3>¿Por que lo hace un carro familiar?</h3>
+            <p>{{carDetail.description}}</p>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="Especificaciones" leftIcon="pi pi-fw pi-calendar">
+          <div class="flex flex-wrap justify-content-center fadein animation-duration-1000">
+            <p-fieldset styleClass="flex align-items-center justify-content-center mr-2 ml-2 mb-5"
+              legend="Nombre del fabricante del vehículo" [toggleable]="false">
+              {{carDetail.brand?.name}}
+            </p-fieldset>
+            <p-fieldset styleClass="flex align-items-center justify-content-center mr-2 ml-2 mb-5" legend="Modelo"
+              [toggleable]="false">
+              {{carDetail.model}}
+            </p-fieldset>
+            <p-fieldset styleClass="flex align-items-center justify-content-center mr-2 ml-2 mb-5"
+              legend="Año de fabricación" [toggleable]="false">
+              {{carDetail.year}}
+            </p-fieldset>
+            <p-fieldset styleClass="flex align-items-center justify-content-center mr-2 ml-2 mb-5"
+              legend="Número de identificación del vehículo" [toggleable]="false">
+              {{carDetail.specification?.identification_number!}}
+            </p-fieldset>
+            <p-fieldset styleClass="flex align-items-center justify-content-center mr-2 ml-2 mb-5" legend="Altura total"
+              [toggleable]="false">
+              {{carDetail.specification?.height}}
+            </p-fieldset>
+            <p-fieldset styleClass="flex align-items-center justify-content-center mr-2 ml-2 mb-5"
+              legend="Anchura total" [toggleable]="false">
+              {{carDetail.specification?.widht}}
+            </p-fieldset>
+            <p-fieldset styleClass="flex align-items-center justify-content-center mr-2 ml-2 mb-5"
+              legend="Longitud total" [toggleable]="false">
+              {{carDetail.specification?.longitude}}
+            </p-fieldset>
+            <p-fieldset styleClass="flex align-items-center justify-content-center mr-2 ml-2 mb-5" legend="Kilometraje"
+              [toggleable]="false">
+              {{carDetail.specification?.km}}
+            </p-fieldset>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="Precio" leftIcon="pi pi-fw pi-money-bill">
+          <div class="fadein animation-duration-1000">
+            <h1 class="text-center">{{carDetail.price | currency}}</h1>
+            <div class="flex flex-wrap justify-content-center">
+                <div class="flex flex-wrap justify-content-center due-container">
+                    <h2 class="flex align-items-center justify-content-center mr-2 ml-2">Simulador de Cuotas</h2>
+                    <p-dropdown class="flex align-items-center justify-content-center mr-2 ml-2" [options]="dues" [(ngModel)]="selectedDue"></p-dropdown>
+                    <h2>{{carDetail.price! / selectedDue | currency}}</h2>
+                </div>
+            </div>
+            
+          </div>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+  <div class="container" *ngIf="(loadingState | async)">
+    <div class="grid">
+        <div class="flex col-12">
+            <p-skeleton width="500px" height="250px" class="m-auto"></p-skeleton>
+        </div>
+        <div class="flex col-12">
+            <p-skeleton width="300px" height="30px" class="m-auto"></p-skeleton>
+        </div>
+
+        <div class="flex col-12">
+            <p-skeleton height="60px" class="col-12 m-auto"></p-skeleton>
+        </div>
+        <div class="flex col-12">
+            <p-skeleton height="400px" class="col-12 m-auto"></p-skeleton>
+        </div>
+            
+    </div>
+   
+  </div>
+  <div class="text-center">
+    <a pButton pRipple class="p-button-raised p-button-outlined no-underline justify-content-center"
+        [routerLink]="['/']">
+        Regresar
+    </a>
+  </div>
+
+</div>
