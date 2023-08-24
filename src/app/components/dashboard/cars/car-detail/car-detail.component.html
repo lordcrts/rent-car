@@ -1,7 +1,7 @@
 <div id="car-detail">
   <div *ngIf="carDetail$ | async as carDetail" class="fadein animation-duration-1000">
     <div class="text-center car-detail__photo m-auto">
-        <p-image class="m-auto" [src]="carDetail.image!" alt="Image" width="100%" [preview]="true">
+        <p-image class="m-auto" [src]="returnImage(carDetail.id!)" alt="Image" width="100%" [preview]="true">
         </p-image>
     </div>
     

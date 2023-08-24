@@ -24,7 +24,7 @@ export const setCars = createAction(
 
 export const getCars = createAction(
   GET_CARS_ACTION,
-  props<{ cars: Car[] }>()
+  props<{ cars: any }>()
 );
 
 export const setCarDetail = createAction(

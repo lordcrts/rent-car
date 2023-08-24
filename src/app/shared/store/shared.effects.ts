@@ -36,7 +36,7 @@ export class SharedEffects {
                 }
                 return this.carService._getCars(params).then(
                     (carsData) =>{
-                        const cars = carsData.results as Car[]
+                        const cars = carsData
                         return getCars({ cars });
                     }
                 )
@@ -68,7 +68,7 @@ export class SharedEffects {
                 }
                 return this.carService._getCars(params).then(
                     (carsData) =>{
-                        const cars = carsData.results as Car[]
+                        const cars = carsData
                         return getCarsByBrand({ cars });
                     }
                 )

@@ -10,6 +10,7 @@ import { Car } from 'src/app/core/models/car.model';
 export class CardComponent implements OnInit {
   @Input() cars!:Car[]
   @Input() buttonText!:string
+  
   constructor() { }
 
   ngOnInit(): void {

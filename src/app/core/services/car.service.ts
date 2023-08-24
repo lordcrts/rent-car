@@ -73,11 +73,31 @@ export class CarService implements Resolve<Car> {
     }
 
     public _getCars(params?: any): Promise<any> {
-        params['limit'] = '10'
-        const toUrlEncoded = (obj:any) => Object.keys(obj).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])).join('&');
-        const url = `${environment.url}api/cars/?expand=state,brand&${toUrlEncoded(params)}`;
+        let body = {
+            "word":params['brand__name'] ? params['brand__name'] : ""
+        }
+        console.log(params)
+        params = {
+            "input": JSON.stringify(body),
+            "stateMachineArn": environment.stateMachineArn
+         }
         return new Promise((resolve, reject) => {
-            this._httpClient.get<any>(url)
+            this._httpClient.post<any>(environment.apigateway,params)
+                .subscribe((response: any) => {
+                    this.totalCount = response.count;
+                    this.items = response.results;
+                    this.onItemsChanged.next(this.items);
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    public _getStatusCars(params?: any): Promise<any> {
+        params = {
+            "executionArn":params.executionArn
+         }
+        return new Promise((resolve, reject) => {
+            this._httpClient.post<any>(environment.apigateway+'querystate',params)
                 .subscribe((response: any) => {
                     this.totalCount = response.count;
                     this.items = response.results;

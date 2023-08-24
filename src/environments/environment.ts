@@ -4,13 +4,15 @@
 
 export const environment = {
   production: false,
-  url:'http://localhost:8000/',
-  client_id_passowrd:'CzWM2qFghMwXOMCxZ9Yqe3KhKaJN9kPt1OTS8sl9',
+  url:'https://qp8waso5p1.execute-api.us-east-2.amazonaws.com/dev/',
+  client_id_passowrd:'PkuUV9bDTRSJk4Mn9eSjeUDvv3FkHMzeVdvRJWRZ',
   grant_type_password:'password',
   client_id_google:'1011597434950-sh3gcq6tcv3scfn3c7ephionbrm406ep.apps.googleusercontent.com',
   grant_type_convert:'convert_token',
-  client_google:'EPOEau0FBCQoMKNuR06wgTcyAWxwylL7FqgoFWDT',
-  client_secret:'p8SkFAZcG8UROsmpVGgpuRCZT3IU7Cld0egdbtx01XK0RRrgKOCcXHGvKG6ZXm9Xnc6lOIadNERiVpH6cjrE0M24ecnL9jZZ6lpMwA6wNFKK3Ap3o7qNsF3mDuqVdyKM',
+  client_google:'Qml4stYhunX4M6VkmU825JDgo3fwS9k1iNB9MBCv',
+  client_secret:'Ptcl2RqNCRmSC3xq79nRgziNGzax2Pge7MUfVqxMbSVlKSjCiBM5IVZjeJ1Kua7RJUzSDt3yiI9vkZWkLMun7U0FlRf5PkEYUZBRwqRmFstVf06CQw9Hb7H6hI4jp85W',
+  apigateway:"https://ni2jppyjo3.execute-api.us-east-2.amazonaws.com/dev/",
+  stateMachineArn:"arn:aws:states:us-east-2:782845026101:stateMachine:HelloWorld",
 };
 
 /*
